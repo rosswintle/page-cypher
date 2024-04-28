@@ -1,6 +1,4 @@
-// Check if the class is already defined
-if (typeof PageCypher === 'undefined') {
-
+(function () {
     class PageCypher {
 
         constructor() {
@@ -99,5 +97,5 @@ if (typeof PageCypher === 'undefined') {
     }
 
     const pageCypher = new PageCypher();
-}
-pageCypher.encode()
+    pageCypher.encode()
+})()
