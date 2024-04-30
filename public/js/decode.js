@@ -6,6 +6,7 @@
             this.words = ''
             this.letters = {}
             this.text = this.getText();
+            this.errors = [];
 
             this.text = this.text.replaceAll(`\n`, ' ');
             this.words = this.text.split(' ');
@@ -33,8 +34,8 @@
             }
 
             if (!this.letters[letter]) {
-                console.log(`Could not encode letter ${letter}`);
-                return ' ';
+                this.errors.push(`Could not encode '${letter}' - this does not appear in the text of the page`);
+                return letter;
             }
 
             let possibleCodes = this.letters[letter];
@@ -43,8 +44,8 @@
         }
 
         decodeLetter(code) {
-            if (code === ' ') {
-                return ' ';
+            if (typeof code === 'string') {
+                return code;
             }
 
             let word = this.words[code.w];
@@ -53,15 +54,23 @@
 
         codeItem2text(codeItem) {
             if (codeItem === ' ') {
-                return "SPACE"
+                return "__"
+            }
+
+            if (typeof codeItem === 'string') {
+                return codeItem;
             }
 
             return `${codeItem.w}-${codeItem.l}`
         }
 
         text2CodeItem(text) {
-            if (text === 'SPACE') {
+            if (text === '__') {
                 return ' '
+            }
+
+            if (text.length === 1) {
+                return text;
             }
 
             const [word, letter] = text.split('-')
@@ -71,10 +80,20 @@
             }
         }
 
+        getErrorsContent() {
+            if (this.errors.length === 0) {
+                return '';
+            }
+
+            return '\n\nErrors:\n' + this.errors.join('\n');
+        }
+
         encode() {
             const message = prompt('Enter your message');
             let messageLetters = message.split('');
             const code = messageLetters.map(this.encodeLetter.bind(this));
+            console.log(code)
+
             const codeContent = 'Your code is: ' + code.map(this.codeItem2text).join(',')
 
             const newDiv = document.createElement('div');
@@ -82,7 +101,7 @@
             newDiv.style.backgroundColor = 'white'
             newDiv.style.color = 'black'
             const newPre = document.createElement('pre');
-            newPre.innerText = codeContent;
+            newPre.innerText = codeContent + this.getErrorsContent();
             newDiv.appendChild(newPre)
 
             document.body.prepend(newDiv);
