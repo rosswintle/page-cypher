@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Page Cypher</title>
     <meta name="description" content="">
 
     <link rel="stylesheet" href="/css/styles.css">
@@ -13,7 +13,7 @@
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Home Page">
+    <meta property="og:title" content="Page Cypher">
     <meta property="og:description" content="">
     <meta property="og:image" content="">
 
@@ -21,7 +21,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="">
     <meta property="twitter:url" content="">
-    <meta name="twitter:title" content="Home Page">
+    <meta name="twitter:title" content="Page Cypher">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="">
 </head>
@@ -32,7 +32,7 @@
 <body>
     
 
-<main x-data="cypher" class="w-100 max-w-2xl mx-auto">
+<main x-data="cypher" class="w-100 max-w-2xl mx-auto px-5 py-10">
     <h1 class="mt-8 text-6xl text-center">Page Cypher</h1>
     <h2 class="mt-4 text-2xl">An Ottendorf Cypher tool using web pages as source material</h2>
 
@@ -44,25 +44,45 @@
         </p>
         <p>
             These bookmarklets let you use the text of a web page as the key text. You can then encode or
-            decode messages.
+            decode messages. Of course, this is dependent on the page not changing.
         </p>
+        <p>
+            You can then exchange messages with someone else who knows the key text page URL by sending them
+            the coded message. You could also use it to store secret reminders for yourself.
+        </p>
+
         <p class="flex justify-center">
-            <a class="mr-12 border border-grey-500 rounded px-4 py-2"
+            <a class="mr-8 border border-grey-500 rounded px-4 py-2"
                 href="javascript:(function(){var s=document.createElement('script');s.src='https://page-cypher.veryuseful.app/js/encode.js';document.body.appendChild(s);})();">Cypher
                 Encode</a>
             <a class="border border-grey-500 rounded px-4 py-2"
                 href="javascript:(function(){var s=document.createElement('script');s.src='https://page-cypher.veryuseful.app/js/decode.js';document.body.appendChild(s);})();">Cypher
                 Decode</a>
         </p>
+
+        <h3>Installing</h3>
         <p>
-            You will need to drag the bookmarklets to your bookmarks bar. Then, when you are on a page you
-            want to use as the key text, click the "Cypher Encode" bookmarklet to encode text. The coded
-            message will be displayed at the top of the page.
+            This only really works on desktop browsers.
         </p>
         <p>
-            To decode a message, click the "Cypher Decode" bookmarklet. The decoded message will be displayed
-            in a pop-up window.
+            You will need to drag the bookmarklets to your bookmarks bar. If you can't see a bookmarks bar, go to
+            the "View" menu and select "Show Bookmarks Bar" or "Show Favourites Bar", then drag the buttons into it.
         </p>
+
+        <h3>Encoding</h3>
+        <ul>
+            <li>When you are on a page you want to use as the key text, click the "Cypher Encode" bookmarklet.</li>
+            <li>You will be asked for the message you want to encode.</li>
+            <li>The coded message will be displayed at the top of the page.</li>
+        </ul>
+
+        <h3>Decoding</h3>
+        <ul>
+            <li>When you are on the page that was used as the key text for encoding, click the "Cypher Decode"
+                bookmarklet.</li>
+            <li>You will be asked for the coded message.</li>
+            <li>The decoded message will be displayed in a pop-up window.</li>
+        </ul>
 
     </div>
 </main>
