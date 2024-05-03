@@ -14,7 +14,12 @@
         }
 
         getText() {
-            return document.querySelector('main').outerText;
+            const main = document.querySelector('main');
+            if (main) {
+                return main.outerText;
+            } else {
+                return document.body.outerText;
+            }
         }
 
         analyzeWord(word, wordIndex) {
